@@ -1,1 +1,1 @@
-# Proiect-Coq---JavaScript
+# Proiect-Coq-JavaScript
