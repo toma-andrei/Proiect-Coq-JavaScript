@@ -1,5 +1,4 @@
 Require Import String.
-
 Inductive identif := a | b | c | d | e | f | g | h | i.
 
 Inductive Value :=
@@ -8,9 +7,6 @@ Inductive Value :=
 | Boolean : bool -> Value.
 
 Definition Env : identif -> Value.
-
-Scheme Equality for Value.
-Open Scope string_scope.
 
 Inductive Exp :=
 | evar : Value -> Exp
@@ -51,7 +47,6 @@ Notation "A === B" := (eqValeqType A B) (at level 62).
 Notation "A !== B" := (noteqValeqType A B) (at level 62).
 Notation "' A '" := (estring A) (at level 62).
 
-
 Coercion enum : nat >-> Exp.
 
 Compute (true +' 1).
@@ -73,10 +68,8 @@ Notation "'Let' A" := (declaration A) (at level 100).
 Notation "'const' A" := (declaration A) (at level 100).
 Notation "A =' B" := (assign A B) (at level 101).
 Notation "A ; B" := (sequence A B) (at level 101).
-Notation "'If' A '{' B '}' 'Else' '{' C '}'" := (ifElse A B C) (at level 102).
-Notation "'If' A '{' B '}'" := (ifThen A B) (at level 90).
-
-Compute (If (a >=' 2) { (a =' 3) } ).
+Notation "'If' A { B } 'Else' { C }" := (ifElse A B C) (at level 102).
+Notation "'If' A { B }" := (ifThen A B) (at level 90).
 
 
 
